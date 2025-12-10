@@ -1,3 +1,44 @@
 services:
-  db:
+  mariadb:
     build: ./requirements/mariadb
+    expose:
+      - "3306" # pierre dit qu'il faut pas car ils sont deja sur le meme network
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - app-network
+    container_name: "mariadb"
+    env_file:
+      - ./.env
+  wordpress:
+    build: ./requirements/wordpress
+    expose:
+      - "9000" # pierre dit qu'il faut pas car ils sont deja sur le meme network
+    volumes:
+      - wpdata:/var/www/html
+    networks:
+      - app-network
+    container_name: "wordpress"
+    depends_on:
+      - mariadb
+    env_file:
+      - ./.env
+  nginx:
+    build: ./requirements/nginx
+    ports:
+      - "4430:80"
+    volumes:
+      - wpdata:/var/www/html
+    networks:
+      - app-network
+    depends_on:
+      - wordpress
+    container_name: "nginx"
+
+volumes:
+  wpdata:
+  dbdata:
+
+networks:
+  app-network:
+    driver: bridge
