@@ -37,5 +37,11 @@ Credentials for accessing the administration panel are typically set during the 
 To ensure that the services are running correctly, you can:
 1. Use the command:
 ```bash
-docker compose ps
+make ps
+```
+This command will display the status of all running containers. You should see "Up" in STATUS column for all services.
+2. Verify that the web application is accessible via the web browser.
+3. Check the logs for any errors or issues using:
+```bash
+make logs
 ```

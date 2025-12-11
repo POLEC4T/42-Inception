@@ -21,7 +21,7 @@ clean: down
 
 fclean: clean downv
 
-re: fclean all
+re: fclean build up
 
 logs:
 	$(COMPOSE) logs -f

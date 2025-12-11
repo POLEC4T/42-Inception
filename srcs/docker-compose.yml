@@ -35,9 +35,24 @@ services:
       - wordpress
     container_name: "nginx"
 
+# volumes:
+#   dbdata:
+#     name: dbdata
+#     driver_opts:
+#       device: /home/mniemaz/data/mariadb
+#       type: "none"
+#       o: bind
+#   wpdata:
+#     name: wpdata
+#     driver_opts:
+#       device: /home/mniemaz/data/wordpress
+#       type: "none"
+#       o: bind
+
 volumes:
-  wpdata:
   dbdata:
+  wpdata:
+
 
 networks:
   app-network:
