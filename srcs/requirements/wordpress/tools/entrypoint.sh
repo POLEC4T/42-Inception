@@ -22,7 +22,7 @@ if ! wp core is-installed --allow-root; then
   echo "WordPress not installed, running wp core install..."
 
   wp core install \
-    --url="${WP_URL:-https://localhost:4430}" \
+    --url="${WP_URL:-https://localhost:443}" \
     --title="${WP_TITLE:-Inception mniemaz website}" \
     --admin_user="${WP_ADMIN_USER:-mniemaz}" \
     --admin_password="${WP_ADMIN_PASSWORD:-mniemaz}" \
