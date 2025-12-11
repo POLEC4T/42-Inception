@@ -13,7 +13,6 @@ RUN apk add --no-cache mariadb mariadb-client \
 
 EXPOSE 3306
 
-# CMD ["mariadbd", "--user=mysql", "--datadir=/var/lib/mysql"]
-ENTRYPOINT [ "sh", "./conf/entrypoint.sh" ]
+ENTRYPOINT [ "sh", "./tools/entrypoint.sh" ]
 
 

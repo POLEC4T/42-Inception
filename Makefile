@@ -26,4 +26,7 @@ re: fclean all
 logs:
 	$(COMPOSE) logs -f
 
-.PHONY: all clean fclean re up down downv build logs
+ps:
+	$(COMPOSE) ps
+
+.PHONY: all clean fclean re up down downv build logs ps
