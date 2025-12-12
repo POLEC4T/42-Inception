@@ -1,8 +1,6 @@
 services:
   mariadb:
     build: ./requirements/mariadb
-    expose:
-      - "3306" # pierre dit qu'il faut pas car ils sont deja sur le meme network
     volumes:
       - dbdata:/var/lib/mysql
     networks:
@@ -12,8 +10,6 @@ services:
       - ./.env
   wordpress:
     build: ./requirements/wordpress
-    expose:
-      - "9000" # pierre dit qu'il faut pas car ils sont deja sur le meme network
     volumes:
       - wpdata:/var/www/html
     networks:
