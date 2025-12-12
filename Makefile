@@ -17,13 +17,9 @@ down:
 downv:
 	$(COMPOSE) down -v
 
-rmvolumes:
-	rm -rf /home/mniemaz/data/wordpress/*
-	rm -rf /home/mniemaz/data/mariadb/*
-
 clean: down
 
-fclean: downv rmvolumes
+fclean: clean downv
 
 re: fclean build up
 
