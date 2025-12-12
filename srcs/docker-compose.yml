@@ -51,11 +51,6 @@ volumes:
       type: "none"
       o: bind
 
-# volumes:
-#   dbdata:
-#   wpdata:
-
-
 networks:
   app-network:
     driver: bridge

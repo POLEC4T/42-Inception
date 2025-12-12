@@ -29,10 +29,26 @@ make down
 2. Navigate to `https://mniemaz.42.fr/wp-admin`
 3. Log in using the administrator credentials provided during setup.
 ## Managing Credentials
-Credentials for accessing the administration panel are typically set during the installation process. If you need to locate or manage these credentials:
-1. Check the installation documentation for default credentials.
-2. If you have changed the credentials, refer to your records or contact the system administrator.
-3. To reset the password, use the "Forgot Password" link on the login page of the administration panel.
+
+```
+DOMAIN_NAME=mniemaz.42.fr
+
+# MARIADB CONFIG
+DB_NAME=wp_db
+DB_ROOT_PASSWORD=root
+DB_HOST=mariadb
+DB_ADMIN_USER=mniemaz
+DB_ADMIN_PASSWORD=mniemaz
+
+# WORDPRESS CONFIG
+WP_TITLE=Inception mniemaz website
+WP_ADMIN_USER=mniemaz
+WP_ADMIN_PASSWORD=mniemaz
+WP_ADMIN_EMAIL=mniemaz@mniemaz.com
+WP_USER_LOGIN=wp_user
+WP_USER_EMAIL=wp_user@example.com
+WP_USER_PASSWORD=wp_user
+```
 ## Checking Service Status
 To ensure that the services are running correctly, you can:
 1. Use the command:
