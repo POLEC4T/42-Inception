@@ -9,46 +9,49 @@ This document provides instructions for end users and administrators on how to u
 This project offers the following services:
 - A web application accessible via a web browser.
 - An administration panel for managing the application.
-## Starting and Stopping the Project
+## Starting the Project
 To start the project, follow these steps:
 1. Open your terminal or command prompt.
-2. Navigate to the project directory.
-3. Run the command:
+2. Go to the [Managing Credentials](#Managing-Credentials) section below and create a `.env` file in the `srcs/` directory with your own credentials.
+3. Navigate to the project directory.
+4. Run the command:
 ```bash
 make
 ```
+## Stopping the Project
 To stop the project, use the command:
 ```bash
 make down
 ```
-## Accessing the website:
-1. Open your web browser.
-2. Navigate to `https://mniemaz.42.fr`
-## Accessing the administration panel:
-1. Open your web browser.
-2. Navigate to `https://mniemaz.42.fr/wp-admin`
-3. Log in using the administrator credentials provided during setup.
 ## Managing Credentials
-
-```
-DOMAIN_NAME=mniemaz.42.fr
+Copy the following .env configuration template and fill in your own credentials:
+```bash
+DOMAIN_NAME=localhost # localhost or your domain name
 
 # MARIADB CONFIG
-DB_NAME=wp_db
-DB_ROOT_PASSWORD=root
-DB_HOST=mariadb
-DB_ADMIN_USER=mniemaz
-DB_ADMIN_PASSWORD=mniemaz
+DB_NAME=YOUR_DB_NAME
+DB_ROOT_PASSWORD=YOUR_ROOT_PASSWORD
+DB_HOST=mariadb # This has to be 'mariadb' since it's the service name in docker-compose.yml
+DB_ADMIN_USER=YOUR_DB_ADMIN_USER
+DB_ADMIN_PASSWORD=YOUR_DB_ADMIN_PASSWORD
 
 # WORDPRESS CONFIG
-WP_TITLE=Inception mniemaz website
-WP_ADMIN_USER=mniemaz
-WP_ADMIN_PASSWORD=mniemaz
-WP_ADMIN_EMAIL=mniemaz@mniemaz.com
-WP_USER_LOGIN=wp_user
-WP_USER_EMAIL=wp_user@example.com
-WP_USER_PASSWORD=wp_user
+WP_TITLE=YOUR_WORDPRESS_TITLE
+WP_ADMIN_USER=YOUR_ADMIN_USER
+WP_ADMIN_PASSWORD=YOUR_ADMIN_PASSWORD
+WP_ADMIN_EMAIL=YOUR_ADMIN_EMAIL
+WP_USER_LOGIN=YOUR_USER_LOGIN
+WP_USER_EMAIL=YOUR_USER_EMAIL
+WP_USER_PASSWORD=YOUR_USER_PASSWORD
 ```
+## Accessing the website:
+1. Open your web browser.
+2. Navigate to `https://<your_domain_name>`
+## Accessing the administration panel:
+1. Open your web browser.
+2. Navigate to `https://<your_domain_name>/wp-admin`
+3. Log in with <YOUR_ADMIN_USER> and <YOUR_ADMIN_PASSWORD> you set in the `.env` file.
+Put this file in the `srcs/` directory and name it `.env`.
 ## Checking Service Status
 To ensure that the services are running correctly, you can:
 1. Use the command:
