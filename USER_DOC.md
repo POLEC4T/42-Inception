@@ -23,10 +23,10 @@ make down
 ```
 ## Accessing the website:
 1. Open your web browser.
-2. Navigate to `http://mniemaz.42.fr`
+2. Navigate to `https://mniemaz.42.fr`
 ## Accessing the administration panel:
 1. Open your web browser.
-2. Navigate to `http://mniemaz.42.fr/wp-admin`
+2. Navigate to `https://mniemaz.42.fr/wp-admin`
 3. Log in using the administrator credentials provided during setup.
 ## Managing Credentials
 Credentials for accessing the administration panel are typically set during the installation process. If you need to locate or manage these credentials:
