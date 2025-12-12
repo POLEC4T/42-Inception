@@ -90,8 +90,8 @@ define( 'WP_DEBUG', false );
 /* Add any custom values between this line and the "stop editing" line. */
 
 
-define('WP_HOME', 'https://mniemaz.42.fr');
-define('WP_SITEURL', 'https://mniemaz.42.fr');
+define('WP_HOME', 'https://' . getenv('DOMAIN_NAME'));
+define('WP_SITEURL', 'https://' . getenv('DOMAIN_NAME'));
 
 
 /* That's all, stop editing! Happy publishing. */
