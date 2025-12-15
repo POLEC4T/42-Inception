@@ -11,8 +11,6 @@ RUN apk add --no-cache mariadb mariadb-client \
 	&& sed -i 's/^#bind-address\s*=.*/bind-address = 0.0.0.0\nport=3306/' /etc/my.cnf.d/mariadb-server.cnf \
 	&& sed -i '/skip-networking/d' /etc/my.cnf.d/mariadb-server.cnf
 
-EXPOSE 3306
-
 ENTRYPOINT [ "sh", "./tools/entrypoint.sh" ]
 
 

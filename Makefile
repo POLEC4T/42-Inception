@@ -26,6 +26,9 @@ re: fclean build up
 logs:
 	$(COMPOSE) logs -f
 
+prune:
+	docker system prune --all --volumes --force
+
 ps:
 	$(COMPOSE) ps
 
