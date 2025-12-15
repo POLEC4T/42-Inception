@@ -32,4 +32,4 @@ prune:
 ps:
 	$(COMPOSE) ps
 
-.PHONY: all clean fclean re up down downv build logs ps
+.PHONY: all clean fclean re up down downv build logs ps prune
