@@ -2,7 +2,7 @@
 set -e
 
 DATADIR=/var/lib/mysql
-INIT_FILE=/tmp/init.sql
+INIT_FILE=/docker-entrypoint-initdb.d/init.sql
 
 : "${DB_ROOT_PASSWORD:?Required}"
 : "${DB_NAME:?Required}"
