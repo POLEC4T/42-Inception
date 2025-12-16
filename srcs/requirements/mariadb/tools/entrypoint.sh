@@ -1,13 +1,15 @@
 #!/bin/sh
 set -e
 
-DATADIR=/var/lib/mysql
-INIT_FILE=/docker-entrypoint-initdb.d/init.sql
-
 : "${DB_ROOT_PASSWORD:?Required}"
 : "${DB_NAME:?Required}"
 : "${DB_ADMIN_USER:?Required}"
 : "${DB_ADMIN_PASSWORD:?Required}"
+
+DATADIR=/var/lib/mysql
+MARIADB_ENTRYPOINT=/docker-entrypoint-initdb.d
+mkdir ${MARIADB_ENTRYPOINT}
+INIT_FILE=${MARIADB_ENTRYPOINT}/init.sql
 
 if [ ! -d "$DATADIR/mysql" ]; then
 	echo "Database not found, initializing database..."
