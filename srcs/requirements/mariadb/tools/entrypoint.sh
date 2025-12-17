@@ -1,10 +1,10 @@
 #!/bin/sh
 set -e
 
-: "${DB_ROOT_PASSWORD:?Required}"
-: "${DB_NAME:?Required}"
-: "${DB_ADMIN_USER:?Required}"
-: "${DB_ADMIN_PASSWORD:?Required}"
+: "${DB_ROOT_PASSWORD:?Required in srcs/.env, see USER_DOC.md}"
+: "${DB_NAME:?Required in srcs/.env, see USER_DOC.md}"
+: "${DB_ADMIN_USER:?Required in srcs/.env, see USER_DOC.md}"
+: "${DB_ADMIN_PASSWORD:?Required in srcs/.env, see USER_DOC.md}"
 
 DATADIR=/var/lib/mysql
 
