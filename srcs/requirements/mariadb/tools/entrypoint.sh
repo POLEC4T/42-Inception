@@ -7,16 +7,22 @@ set -e
 : "${DB_ADMIN_PASSWORD:?Required}"
 
 DATADIR=/var/lib/mysql
-MARIADB_ENTRYPOINT=/docker-entrypoint-initdb.d
-mkdir ${MARIADB_ENTRYPOINT}
-INIT_FILE=${MARIADB_ENTRYPOINT}/init.sql
 
 if [ ! -d "$DATADIR/mysql" ]; then
-	echo "Database not found, initializing database..."
+	echo "Database not found, installing mariadb..."
 	mariadb-install-db --user=mysql --datadir="$DATADIR"
 
-	echo "Setting root password and creating database and user..."
-	cat > "$INIT_FILE" <<-EOSQL
+
+	mariadbd --user=mysql --datadir="$DATADIR" --skip-networking &
+	TMP_PID=$!
+
+	until mariadb-admin ping &>/dev/null; do
+		echo "Waiting for database server to start..."
+		sleep 1
+	done
+
+	echo "Configuring root password and creating database and user..."
+	mariadb -uroot <<-EOSQL
 		CREATE USER IF NOT EXISTS 'root'@'%' IDENTIFIED BY '${DB_ROOT_PASSWORD}';
 		GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
 		CREATE DATABASE IF NOT EXISTS \`${DB_NAME}\`;
@@ -25,15 +31,12 @@ if [ ! -d "$DATADIR/mysql" ]; then
 		FLUSH PRIVILEGES;
 	EOSQL
 
+	mariadb-admin shutdown
+	wait $TMP_PID
+
 else
 	echo "Database already exists, skipping initialization."
 fi
 
 echo "Starting MariaDB server (0.0.0.0:3306)..."
-
-if [ ! -f "$INIT_FILE" ]; then
-	trap "rm -f $INIT_FILE" EXIT 
-	exec mariadbd --user=mysql --datadir="$DATADIR" --bind-address=0.0.0.0 --port=3306 --init-file="$INIT_FILE"
-else
-	exec mariadbd --user=mysql --datadir="$DATADIR" --bind-address=0.0.0.0 --port=3306
-fi
+exec mariadbd --user=mysql --datadir="$DATADIR" --bind-address=0.0.0.0 --port=3306
