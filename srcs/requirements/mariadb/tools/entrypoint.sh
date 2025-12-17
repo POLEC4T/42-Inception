@@ -16,7 +16,7 @@ if [ ! -d "$DATADIR/mysql" ]; then
 	mariadbd --user=mysql --datadir="$DATADIR" --skip-networking &
 	TMP_PID=$!
 
-	until mariadb-admin ping &>/dev/null; do
+	until mariadb-admin ping --silent; do
 		echo "Waiting for database server to start..."
 		sleep 1
 	done
