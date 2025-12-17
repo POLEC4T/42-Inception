@@ -36,9 +36,8 @@ logs:
 
 prune: rmvolumes
 	docker system prune --all --volumes --force
-	
 
 ps:
 	$(COMPOSE) ps
 
-.PHONY: all clean fclean re up down downv build logs ps prune
+.PHONY: all clean fclean re up down downv build logs ps prune rmvolumes mkvolumes_dirs
